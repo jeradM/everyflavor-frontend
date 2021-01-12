@@ -1,0 +1,11 @@
+@keyframes spin-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading-spin {
+    animation: spin-animation 1s ease-in-out infinite;
+}

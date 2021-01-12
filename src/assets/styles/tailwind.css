@@ -1,0 +1,79 @@
+@import "./theme-light.css";
+@import "./theme-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .table-header {
+        @apply px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-soft;
+    }
+    .table-cell {
+        @apply px-3 py-1 tracking-wide text-xs;
+    }
+    .text-input {
+        @apply px-2 py-1 text-sm border rounded-sm bg-body text-body;
+    }
+    .text-input[disabled] {
+        @apply bg-body-accent;
+    }
+    .label {
+        @apply tracking-wider text-sm p-1;
+    }
+    .btn {
+        @apply py-2 px-3 text-sm shadow rounded-btn;
+    }
+    .btn:hover {
+        @apply shadow-md;
+    }
+    .btn:active {
+        @apply outline-none shadow;
+    }
+    .btn:focus {
+        @apply outline-none;
+    }
+    .btn.small {
+        @apply text-xs;
+    }
+    .btn.xsmall {
+        @apply py-1 px-2 text-xs;
+    }
+    .btn-text {
+        @apply py-2 px-3 text-sm border-none;
+    }
+    .btn-text:active, .btn-text:focus {
+        @apply outline-none text-default;
+    }
+    .flat {
+        @apply shadow-none;
+    }
+    .default {
+        @apply bg-default text-default;
+    }
+    .primary {
+        @apply bg-primary text-primary;
+    }
+    .secondary {
+        @apply bg-secondary text-secondary;
+    }
+    .success {
+        @apply bg-success text-success;
+    }
+    .info {
+        @apply bg-info text-info;
+    }
+    .warning {
+        @apply bg-warning text-warning;
+    }
+    .error {
+        @apply bg-error text-error;
+    }
+    .toast {
+        @apply text-sm py-2 px-6 text-left z-20;
+    }
+
+    .red {
+        color: var(--color-red);
+    }
+}

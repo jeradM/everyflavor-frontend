@@ -1,0 +1,41 @@
+.has-error {
+    position: relative;
+}
+
+.has-error,
+.has-error label,
+.has-error h2 {
+    font-weight: bold;
+    color: var(--color-red);
+}
+
+.has-error > input,
+.has-error > textarea {
+    border-color: var(--color-red);
+}
+
+.drawer-active-link {
+    color: var(--color-bg-primary);
+    position: relative;
+}
+
+.drawer-active-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 3px;
+    background: var(--color-bg-primary);
+}
+
+.hover-link {
+    color: inherit;
+    transition: color .1s linear;
+}
+
+.hover-link:hover,
+.hover-link:focus,
+.hover-link:active {
+    color: var(--color-bg-primary);
+}

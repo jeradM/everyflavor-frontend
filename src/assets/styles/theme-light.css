@@ -1,0 +1,40 @@
+.theme-light {
+    --color-gray: #EEE;
+    --color-gray-light: #EFEFEF;
+    --color-gray-dark: #777777;
+
+    --color-blue: #0caadc;
+    --color-green: #26c485;
+    --color-orange: #f48549;
+    --color-red:  #ff6f59;
+
+    --color-bg-body: #FFF;
+    --color-bg-body-accent: var(--color-gray-light);
+    --color-bg-nav: #f3f3f3;
+    --color-bg-default: #fafafa;
+    --color-bg-primary: #4E62FB;
+    --color-bg-secondary: #00B2CA;
+    --color-bg-info: var(--color-blue);
+    --color-bg-success: var(--color-green);
+    --color-bg-warning: var(--color-orange);
+    --color-bg-error: var(--color-red);
+
+    --color-text-body: #2F242C;
+    --color-text-soft:var(--color-gray-dark);
+    --color-text-ghost:#dddddd;
+    --color-text-nav: #282828;
+    --color-text-default: var(--color-text-body);
+    --color-text-primary: #F7F7F7;
+    --color-text-secondary: #F7F7F7;
+    --color-text-info: #FFF;
+    --color-text-success: var(--color-text-info);
+    --color-text-warning: var(--color-text-info);
+    --color-text-error: var(--color-text-info);
+
+    --color-border-default: var(--color-gray);
+    --color-border-inverse: var(--color-gray-dark);
+
+    --color-toggle-background: #c9c9c9;
+
+    --rounded-btn: 2px;
+}
