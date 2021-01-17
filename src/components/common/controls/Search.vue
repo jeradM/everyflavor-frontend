@@ -53,7 +53,6 @@ export default {
       if (el === "wrapper") {
         classes = {
           flex: true,
-          rounded: true,
           relative: true
         };
       } else if (el === "input") {

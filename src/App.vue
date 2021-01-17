@@ -10,9 +10,9 @@
 
     <AuthPopup
       :open="accountOpen"
-      @logged-in="toggleAccount(false)"
-      @keydown.esc="toggleAccount(false)"
-      @close-auth="toggleAccount(false)"
+      @keydown.esc="closeAccount"
+      @close-auth="closeAccount"
+      v-click-outside="closeAccount"
     />
     <NavDrawer :open="drawerOpen" @toggle="toggleDrawer" />
     <div class="content container mx-auto mt-16">
@@ -25,6 +25,7 @@
 import AuthPopup from "@/components/nav/AuthPopup";
 import NavBar from "@/components/nav/NavBar";
 import NavDrawer from "@/components/nav/NavDrawer";
+import LoginRegister from "@/components/common/LoginRegister";
 import eventBus from "@/event-bus";
 
 import "toastify-js/src/toastify.css";
@@ -54,12 +55,27 @@ export default {
       else this.drawerOpen = !!open;
     },
     toggleAccount(open) {
+      if (!this.$store.getters["user/isLoggedIn"]) {
+        this.showAuthModal();
+        return;
+      }
       if (open == null) this.accountOpen = !this.accountOpen;
       else this.accountOpen = !!open;
+    },
+    closeAccount() {
+      if (!this.accountOpen) return;
+      this.accountOpen = false;
     },
     closeAll() {
       this.toggleDrawer(false);
       this.toggleAccount(false);
+    },
+    showAuthModal() {
+      this.$modal.show(
+        LoginRegister,
+        {},
+        { name: "LoginRegister", height: "auto", adaptive: true, maxWidth: 300 }
+      );
     }
   },
   mounted() {

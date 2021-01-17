@@ -4,11 +4,10 @@
     class="z-40 flex items-stretch fixed mt-0 top-0 shadow bg-nav text-nav w-full px-8 h-16 shadow"
   >
     <div class="flex items-stretch pr-4 flex-grow sm:flex-grow-0">
-      <span class="flex items-center inline-block sm:hidden">
+      <span class="flex items-center inline-block sm:hidden" @click="toggle">
         <svg-icon
           :path="menuIcon"
           type="mdi"
-          @click="toggle"
           class="cursor-pointer select-none"
         />
       </span>
@@ -63,7 +62,7 @@ export default {
   components: { Logo, SvgIcon },
   data() {
     return {
-      windowWidth: window.innerWidth,
+      windowWidth: window.innerWidth
     };
   },
   computed: {
@@ -71,7 +70,7 @@ export default {
     personIcon: () => mdiAccount,
     loggedIn() {
       return this.$store.getters["user/isLoggedIn"];
-    },
+    }
   },
   methods: {
     toggle() {
@@ -85,7 +84,7 @@ export default {
     },
     closeAuth() {
       this.$emit("close-auth");
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -94,7 +93,7 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener("resize", this.onResize);
-  },
+  }
 };
 </script>
 

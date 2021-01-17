@@ -1,7 +1,7 @@
 <template>
-  <span>
+  <span class="font-alt">
     <span v-if="!compact" class="logo select-none" :class="classes">
-      <span class="logoE bg-primary rounded text-primary py-1 px-2 font-bold"
+      <span class="logoE bg-primary rounded text-primary py-1 px-2 font-alt"
         >E</span
       >
       very Flavor
@@ -21,13 +21,13 @@ export default {
   props: {
     classes: {
       type: [Array, String, Object],
-      default: () => [],
+      default: () => []
     },
     compact: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 </script>
 

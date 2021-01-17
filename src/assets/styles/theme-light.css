@@ -34,7 +34,7 @@
     --color-border-default: var(--color-gray);
     --color-border-inverse: var(--color-gray-dark);
 
-    --color-toggle-background: #c9c9c9;
+    --color-toggle-background: #d9d9d9;
 
     --rounded-btn: 2px;
 }

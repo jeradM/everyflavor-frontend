@@ -6,7 +6,7 @@
         <section class="border p-4">
           <h4 class="label font-bold mb-3">Nicotine</h4>
           <div class="inline-input flex items-center">
-            <label for="use-nic" class="label text-xs">Use Nicotine</label>
+            <label class="label text-xs">Use Nicotine</label>
             <span>
               <Toggle :on="batch.useNic" @toggled="toggleNic" />
             </span>
@@ -24,7 +24,7 @@
             />
           </div>
           <div class="inline-input flex items-center">
-            <label id="nic-vg" class="label text-xs">Base VG/PG %</label>
+            <label class="label text-xs">Base VG/PG %</label>
             <span class="flex vg-pg items-center">
               <input
                 type="text"
@@ -80,7 +80,7 @@
                 :disabled="batch.maxVg"
               />
               <div class="flex items-center ml-4">
-                <label id="nic-vg" class="label text-xs">Max</label>
+                <label class="label text-xs">Max</label>
                 <span class="flex vg-pg items-center">
                   <Toggle :on="batch.maxVg" @toggled="toggleMaxVg" />
                 </span>

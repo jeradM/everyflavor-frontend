@@ -6,11 +6,13 @@
       :class="classes"
       :aria-label="label"
       :value="value"
+      :placeholder="placeholder"
       @input.stop="search"
       @keydown.down="handleDown"
       @keydown.up="handleUp"
       @keydown.enter="handleEnter"
       @keydown.tab="handleTab"
+      @keydown.delete="$emit('onDelete')"
       @keydown.esc="(isOpen = false), (selectedIdx = 0)"
     />
     <div v-show="isOpen" class="absolute shadow-md w-full p-2 z-40 bg-body">
@@ -67,6 +69,9 @@ export default {
     tabSelect: {
       type: Boolean,
       default: true
+    },
+    placeholder: {
+      type: String
     },
     classes: String
   },

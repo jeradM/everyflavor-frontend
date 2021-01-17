@@ -33,7 +33,11 @@
     </div>
     <div v-if="isOpen" class="px-2 py-1 h-auto">
       <div class="flex justify-end inline-block">
-        <RecipeActions :canEdit="canEdit" :recipeId="recipe.id" />
+        <RecipeActions
+          :canEdit="canEdit"
+          :recipeId="recipe.id"
+          :published="recipe.public"
+        />
       </div>
       <RecipeFormFlavors :recipe-flavors="recipe.flavors" striped read-only />
       <div class="text-xs text-soft py-2">
@@ -56,12 +60,12 @@ export default {
   components: { RecipeSummary, RecipeFormFlavors, RecipeActions, SvgIcon },
   data() {
     return {
-      isOpen: false,
+      isOpen: false
     };
   },
   props: {
     recipe: Object,
-    idx: Number,
+    idx: Number
   },
   computed: {
     viewUrl() {
@@ -83,7 +87,7 @@ export default {
         "indigo",
         "pink",
         "purple",
-        "orange",
+        "orange"
       ];
       const i = this.recipe.id % 9;
       return `bg-${bgs[i]}-300`;
@@ -96,8 +100,8 @@ export default {
       return canEditRecipe(this.recipe);
     },
     downIcon: () => mdiChevronDown,
-    upIcon: () => mdiChevronUp,
-  },
+    upIcon: () => mdiChevronUp
+  }
 };
 </script>
 

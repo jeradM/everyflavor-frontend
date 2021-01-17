@@ -31,7 +31,12 @@
         v-if="showActions && recipe.id"
         class="flex justify-center sm:justify-start inline-block"
       >
-        <recipe-actions :recipeId="recipe.id" :canEdit="canEdit" />
+        <recipe-actions
+          :recipeId="recipe.id"
+          :canEdit="canEdit"
+          :published="recipe.public"
+          @published="$emit('published')"
+        />
       </div>
     </div>
     <div

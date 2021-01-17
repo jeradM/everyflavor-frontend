@@ -1,5 +1,5 @@
 <template>
-  <div class="border flex flex-wrap items-center">
+  <div class="border-b flex flex-wrap items-center">
     <div class="flex flex-shrink flex-wrap">
       <span
         v-for="(chip, i) of values"
@@ -26,8 +26,9 @@
         :label="label"
         :search-fn="search"
         :results-value-fn="valueFn"
+        :placeholder="values.length === 0 ? placeholder : ''"
         @selected="addChip"
-        @keydown.delete="deleteLast"
+        @onDelete="deleteLast"
         classes="border-none focus:outline-none"
       />
     </div>
@@ -42,35 +43,38 @@ export default {
   components: { AutoComplete },
   data() {
     return {
-      val: "",
+      val: ""
     };
   },
   props: {
     label: {
       type: String,
-      default: "Chips Input",
+      default: "Chips Input"
     },
     values: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     items: {
       type: Array,
-      default: null,
+      default: null
     },
     searchFn: {
-      type: Function,
+      type: Function
     },
     valueFn: {
       type: Function,
-      default: (v) => v,
+      default: v => v
     },
+    placeholder: {
+      type: String
+    }
   },
   methods: {
     search(q, callback) {
       if (q === null || q === "") callback([]);
       if (this.searchFn) this.searchFn(q, callback);
-      else callback(this.items.filter((i) => i.toLowerCase().startsWith(q)));
+      else callback(this.items.filter(i => i.toLowerCase().startsWith(q)));
     },
     addChip(v) {
       this.$emit("add", v);
@@ -82,8 +86,8 @@ export default {
     deleteLast() {
       if (this.val !== "") return;
       this.$emit("delete", this.values.length - 1);
-    },
-  },
+    }
+  }
 };
 </script>
 

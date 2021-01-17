@@ -19,6 +19,7 @@
         <AutoComplete
           v-if="!readOnly"
           v-model="flavorName"
+          placeholder="Flavor Name"
           :classes="'text-xs'"
           :search-fn="flavorSearchFn"
           :results-value-fn="f => f && `${f.vendor.abbreviation} ${f.name}`"
@@ -35,6 +36,7 @@
           type="text"
           aria-label="flavor percentage"
           :value="percent"
+          placeholder="%"
           @change="percentChanged($event.target.value)"
           class="text-input text-xs min-w-0 text-right w-full"
         />
@@ -103,7 +105,7 @@ export default {
     },
     percent() {
       if (!this.recipeFlavor) return 0;
-      const p = this.recipeFlavor.percentMole;
+      const p = this.recipeFlavor.percentM;
       if (isNaN(p)) {
         return p;
       }

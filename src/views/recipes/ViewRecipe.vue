@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl mx-auto">
-    <RecipeCard :recipe="recipe" />
+    <RecipeCard :recipe="recipe" @published="onPublished" />
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
         tags: []
       }
     };
+  },
+  methods: {
+    onPublished() {
+      this.recipe.public = true;
+    }
   },
   async mounted() {
     this.recipe = await fetchRecipe(parseInt(this.$route.params.id));

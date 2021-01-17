@@ -4,13 +4,10 @@ import user from "./user.module";
 import flavors from "./flavors.module";
 import tags from "./tags.module";
 import recipes from "./recipes.module";
-import eventBus from "@/event-bus";
-
 Vue.use(Vuex);
 
 const unauthorized = () => {
-  store.dispatch("logout");
-  eventBus.emit("showLogin");
+  store.dispatch("user/logout");
 };
 
 const currentUser = () => {

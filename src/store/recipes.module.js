@@ -29,9 +29,10 @@ const actions = {
   async search({ commit, state }) {
     commit("setSearchResults", await fetchRecipes(state.params));
   },
-  setParams({ commit, state }, params) {
+  setParams({ commit, dispatch, state }, params) {
     const p = Object.assign({}, state.params, params);
     commit("setParams", p);
+    dispatch("search");
   }
 };
 

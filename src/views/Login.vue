@@ -27,9 +27,12 @@ export default {
   },
   methods: {
     async submit() {
-      const d = { username: this.username, password: this.password };
+      const data = { username: this.username, password: this.password };
       const url = `${API_URL}/auth/authenticate`;
-      const r = await postJson(url, d, () => notify.error("Login failed"));
+      const r = await postJson(url, {
+        data,
+        onFailure: () => notify.error("Login failed")
+      });
       if (!r) return;
       this.$store.dispatch("fetchFlavorStash");
       this.$store.dispatch("setUser", r);

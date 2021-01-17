@@ -4,10 +4,11 @@
       :class="{ 'has-error': getError('title') }"
       class="flex flex-col mb-2 relative"
     >
-      <label for="recipe-name" class="label">Name</label>
+      <label for="recipe-name" class="label sr-only">Name</label>
       <input
         type="text"
         id="recipe-name"
+        placeholder="Name"
         class="text-input"
         v-model="recipe.title"
         @input="clearError('title')"
@@ -18,10 +19,11 @@
       class="flex flex-col my-4 relative"
       :class="{ 'has-error': getError('description') }"
     >
-      <label for="recipe-description" class="label">Description</label>
+      <label for="recipe-description" class="label sr-only">Description</label>
       <textarea
         id="recipe-description"
         rows="5"
+        placeholder="Description"
         v-model="recipe.description"
         class="text-input"
         @input="clearError('description')"
@@ -29,9 +31,10 @@
       />
     </section>
     <section>
-      <h2 class="label">Tags</h2>
+      <h2 class="label sr-only">Tags</h2>
       <Chips
         label="tags"
+        placeholder="Tags"
         :search-fn="searchTags"
         :values="recipe.tags"
         :value-fn="v => v.tag"
@@ -40,9 +43,10 @@
       />
     </section>
     <section class="mt-4">
-      <h2 class="label">Collaborators</h2>
+      <h2 class="label sr-only">Collaborators</h2>
       <Chips
         label="collaborators"
+        placeholder="Collaborators"
         :search-fn="searchUsers"
         :values="recipe.collaborators"
         :value-fn="v => `@${v.username}`"
@@ -72,6 +76,53 @@
     </section>
     <section class="my-4">
       <h2 class="label mb-4">Options</h2>
+      <div class="flex flex-col md:flex-row text-sm mb-4">
+        <div
+          :class="{ 'has-error': getError('steepDays') }"
+          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+        >
+          <label for="steep-days" class="sr-only">Steep Days</label>
+          <input
+            id="steep-days"
+            type="text"
+            class="text-input w-52 md:w-32"
+            placeholder="Steep Days"
+            :value="recipe.steepDays || ''"
+            :title="getError('steepDays')"
+            @change="e => setIntField('steepDays', { value: e.target.value })"
+          />
+        </div>
+        <div
+          :class="{ 'has-error': getError('vgPercentM') }"
+          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+        >
+          <label for="vg-percent" class="sr-only">Best VG %</label>
+          <input
+            id="vg-percent"
+            type="text"
+            class="text-input w-56 md:w-32"
+            placeholder="Best VG %"
+            :value="recipe.vgPercentM || ''"
+            :title="getError('vgPercentM')"
+            @change="e => setIntField('vgPercentM', { value: e.target.value })"
+          />
+        </div>
+        <div
+          :class="{ 'has-error': getError('temp') }"
+          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+        >
+          <label for="temp" class="sr-only">Best Temp</label>
+          <input
+            id="temp"
+            type="text"
+            class="text-input w-56 md:w-32"
+            placeholder="Best Temp"
+            :value="recipe.temp || ''"
+            :title="getError('temp')"
+            @change="e => setIntField('temp', { value: e.target.value })"
+          />
+        </div>
+      </div>
       <div class="flex flex-col sm:flex-row text-sm">
         <div class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 sm:mb-0">
           <span class="mr-3 w-40 sm:w-auto">Work in Progress</span>
@@ -101,52 +152,8 @@
           />
         </div>
       </div>
-      <div class="flex flex-col md:flex-row text-sm sm:mt-4">
-        <div
-          :class="{ 'has-error': getError('steepDays') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
-        >
-          <label for="steep-days" class="mr-3 w-40 md:w-auto">Steep Days</label>
-          <input
-            id="steep-days"
-            type="text"
-            class="text-input w-24"
-            :value="recipe.steepDays"
-            :title="getError('steepDays')"
-            @input="e => setIntField('steepDays', { value: e.target.value })"
-          />
-        </div>
-        <div
-          :class="{ 'has-error': getError('vgPercent') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
-        >
-          <label for="vg-percent" class="mr-3 w-40 md:w-auto">Best VG %</label>
-          <input
-            id="vg-percent"
-            type="text"
-            class="text-input w-24"
-            :value="recipe.vgPercentM"
-            :title="getError('vgPercentM')"
-            @input="e => setIntField('vgPercentM', { value: e.target.value })"
-          />
-        </div>
-        <div
-          :class="{ 'has-error': getError('temp') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
-        >
-          <label for="temp" class="mr-3 w-40 md:w-auto">Best Temp</label>
-          <input
-            id="temp"
-            type="text"
-            class="text-input w-24"
-            :value="recipe.temp"
-            :title="getError('temp')"
-            @input="e => setIntField('temp', { value: e.target.value })"
-          />
-        </div>
-      </div>
     </section>
-    <div class="w-full text-right">
+    <div v-if="loggedIn" class="w-full text-right">
       <button class="btn bg-primary text-primary" @click="save">Save</button>
     </div>
   </div>
@@ -161,7 +168,7 @@ import RecipeFormFlavors from "./RecipeFormFlavors";
 import Toggle from "@/components/common/controls/Toggle";
 import notifications from "@/notifications";
 import { arraysMatch } from "@/util/helpers";
-import { fetchRecipe, saveRecipe } from "@/util/recipe";
+import { emptyRecipe, fetchRecipe, saveRecipe } from "@/util/recipe";
 import { searchUsers } from "@/util/user";
 import { canEditRecipe } from "@/util/auth";
 
@@ -176,7 +183,7 @@ export default {
   },
   data() {
     return {
-      recipe: { flavors: [], tags: [] },
+      recipe: emptyRecipe(),
       errors: [],
       tags: [],
       loading: true
@@ -186,18 +193,22 @@ export default {
     flavorsLoaded() {
       return this.$store.state.flavors.loaded;
     },
+    loggedIn() {
+      return this.$store.getters["user/isLoggedIn"];
+    },
     mdiPlus: () => mdiPlus,
     mdiLoading: () => mdiLoading
   },
   methods: {
     async save() {
       const { recipe, errors } = await saveRecipe(this.recipe);
+      debugger;
       this.errors = errors;
       if (!errors && recipe) {
         notifications.success("Recipe Saved");
         this.recipe = { ...recipe };
+        this.$router.push(`/recipe/view/${recipe.id}`);
       }
-      this.$router.push(`/recipe/view/${recipe.id}`);
     },
     getRecipeFlavor(idx) {
       return this.recipe.flavors[idx] || {};
@@ -272,6 +283,7 @@ export default {
   async mounted() {
     if (this.recipeId) {
       const r = await fetchRecipe(this.recipeId);
+      debugger;
       if (this.remix || this.newVersion) {
         this.recipe = {
           id: null,
@@ -287,6 +299,7 @@ export default {
           remixOfId: this.remix ? this.recipeId : r.remixOfId,
           public: r.public,
           snv: r.snv,
+          vgPercentM: r.vgPercentM,
           wip: r.wip
         };
       } else {
@@ -297,7 +310,7 @@ export default {
         this.recipe = r;
       }
     } else {
-      this.recipe = { flavors: [], tags: [], collaborators: [] };
+      this.recipe = emptyRecipe();
     }
     this.loading = false;
   }

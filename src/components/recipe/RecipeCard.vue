@@ -1,6 +1,10 @@
 <template>
   <div class="flex flex-col items-stretch p-8 shadow-md">
-    <RecipeHeader :recipe="recipe" show-actions />
+    <RecipeHeader
+      :recipe="recipe"
+      @published="$emit('published')"
+      show-actions
+    />
     <p class="mt-4 text-soft text-sm leading-relaxed text-justify">
       {{ recipe.description }}
     </p>
@@ -35,10 +39,10 @@ export default {
   props: {
     recipe: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 

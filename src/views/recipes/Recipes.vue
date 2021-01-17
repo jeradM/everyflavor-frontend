@@ -9,7 +9,7 @@
         :icon-path="searchIcon"
         :button="true"
         :classes="{
-          wrapper: ['flex-grow', 'shadow']
+          wrapper: ['flex-grow']
         }"
       />
       <button class="ml-2">Advanced</button>

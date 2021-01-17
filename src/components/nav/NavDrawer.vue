@@ -1,9 +1,16 @@
 <template>
-  <fragment>
+  <div>
+    <transition name="fade">
+      <div
+        v-if="open"
+        @click="toggle"
+        class="z-50 fixed top-0 left-0 w-screen h-screen bg-black opacity-25 sm:hidden"
+      ></div>
+    </transition>
     <transition name="slide">
       <div
         v-if="open"
-        class="drawer w-56 bg-body shadow fixed z-40 h-screen top-0 sm:hidden"
+        class="drawer w-56 bg-body shadow fixed z-50 h-screen top-0 sm:hidden"
       >
         <span class="flex justify-center py-6 border-b bg-nav">
           <Logo />
@@ -28,14 +35,7 @@
         </ul>
       </div>
     </transition>
-    <transition name="fade">
-      <div
-        v-if="open"
-        @click="toggle"
-        class="z-30 fixed top-0 left-0 w-screen h-screen bg-black opacity-25 sm:hidden"
-      ></div>
-    </transition>
-  </fragment>
+  </div>
 </template>
 
 <script>
@@ -66,17 +66,18 @@ export default {
 .slide-leave-active {
   transition: transform 0.25s;
 }
-.slide-enter-from,
+.slide-enter,
 .slide-leave-to {
   transform: translateX(-100%);
 }
 
 .fade-enter-active,
+.fade-to,
 .fade-leave-active {
   transition: opacity 0.25s;
 }
 
-.fade-enter-from,
+.fade-enter,
 .fade-leave-to {
   opacity: 0;
 }

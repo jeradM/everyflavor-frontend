@@ -35,6 +35,8 @@ const schema = Joi.object({
     .integer()
     .min(0)
     .strict()
+    .optional()
+    .allow(null)
     .messages({
       "number.base": "Steep Days must be a positive integer",
       "number.min": "Steep Days must be a positive integer",
@@ -44,15 +46,19 @@ const schema = Joi.object({
     .integer()
     .min(0)
     .strict()
+    .optional()
+    .allow(null)
     .messages({
       "number.base": "Best Temp must be a positive integer",
       "number.min": "Best Temp must be a positive integer",
       "number.integer": "Best Temp must be a positive integer"
     }),
-  vgPercent: Joi.number()
+  vgPercentM: Joi.number()
     .integer()
     .min(0)
     .strict()
+    .optional()
+    .allow(null)
     .messages({
       "number.base": "Best VG % must be a positive integer",
       "number.min": "Best VG % must be a positive integer",

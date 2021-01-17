@@ -69,6 +69,7 @@ export default {
   async mounted() {
     const user = this.$store.getters["user/user"];
     this.stats = await fetchUserStats(user.id);
+    this.$store.dispatch("user/searchRecipes");
   }
 };
 </script>

@@ -44,6 +44,12 @@ module.exports = {
       borderRadius: {
         none: "0",
         btn: "var(--rounded-btn)"
+      },
+      fontFamily: {
+        alt: ["Montserrat", "sans-serif"]
+      },
+      fontSize: {
+        tiny: ".65rem"
       }
     }
   },
