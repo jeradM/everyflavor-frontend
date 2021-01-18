@@ -4,11 +4,10 @@
       :class="{ 'has-error': getError('title') }"
       class="flex flex-col mb-2 relative"
     >
-      <label for="recipe-name" class="label sr-only">Name</label>
+      <label for="recipe-name" class="text-label">Name</label>
       <input
         type="text"
         id="recipe-name"
-        placeholder="Name"
         class="text-input"
         v-model="recipe.title"
         @input="clearError('title')"
@@ -19,11 +18,10 @@
       class="flex flex-col my-4 relative"
       :class="{ 'has-error': getError('description') }"
     >
-      <label for="recipe-description" class="label sr-only">Description</label>
+      <label for="recipe-description" class="text-label">Description</label>
       <textarea
         id="recipe-description"
         rows="5"
-        placeholder="Description"
         v-model="recipe.description"
         class="text-input"
         @input="clearError('description')"
@@ -31,10 +29,9 @@
       />
     </section>
     <section>
-      <h2 class="label sr-only">Tags</h2>
+      <h2 class="text-label">Tags</h2>
       <Chips
         label="tags"
-        placeholder="Tags"
         :search-fn="searchTags"
         :values="recipe.tags"
         :value-fn="v => v.tag"
@@ -43,10 +40,9 @@
       />
     </section>
     <section class="mt-4">
-      <h2 class="label sr-only">Collaborators</h2>
+      <h2 class="text-label">Collaborators</h2>
       <Chips
         label="collaborators"
-        placeholder="Collaborators"
         :search-fn="searchUsers"
         :values="recipe.collaborators"
         :value-fn="v => `@${v.username}`"
@@ -79,14 +75,13 @@
       <div class="flex flex-col md:flex-row text-sm mb-4">
         <div
           :class="{ 'has-error': getError('steepDays') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+          class="flex ml-2 mr-4 items-center mb-2 md:mb-0"
         >
-          <label for="steep-days" class="sr-only">Steep Days</label>
+          <label for="steep-days" class="text-label w-24">Steep Days</label>
           <input
             id="steep-days"
             type="text"
-            class="text-input w-52 md:w-32"
-            placeholder="Steep Days"
+            class="text-input w-32"
             :value="recipe.steepDays || ''"
             :title="getError('steepDays')"
             @change="e => setIntField('steepDays', { value: e.target.value })"
@@ -94,14 +89,13 @@
         </div>
         <div
           :class="{ 'has-error': getError('vgPercentM') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+          class="flex ml-2 mr-4 items-center mb-2 md:mb-0"
         >
-          <label for="vg-percent" class="sr-only">Best VG %</label>
+          <label for="vg-percent" class="text-label w-24">Best VG %</label>
           <input
             id="vg-percent"
             type="text"
-            class="text-input w-56 md:w-32"
-            placeholder="Best VG %"
+            class="text-input w-32"
             :value="recipe.vgPercentM || ''"
             :title="getError('vgPercentM')"
             @change="e => setIntField('vgPercentM', { value: e.target.value })"
@@ -109,14 +103,13 @@
         </div>
         <div
           :class="{ 'has-error': getError('temp') }"
-          class="flex ml-4 sm:ml-2 mr-4 items-center mb-2 md:mb-0"
+          class="flex ml-2 mr-4 items-center mb-2 md:mb-0"
         >
-          <label for="temp" class="sr-only">Best Temp</label>
+          <label for="temp" class="text-label w-24">Best Temp</label>
           <input
             id="temp"
             type="text"
-            class="text-input w-56 md:w-32"
-            placeholder="Best Temp"
+            class="text-input w-32"
             :value="recipe.temp || ''"
             :title="getError('temp')"
             @change="e => setIntField('temp', { value: e.target.value })"
@@ -131,15 +124,6 @@
             label="work in progress"
             :on="recipe.wip"
             @toggled="v => setBoolField('wip', v)"
-          />
-        </div>
-        <div class="flex mx-4 items-center mb-2 sm:mb-0">
-          <span class="mr-3 w-40 sm:w-auto">Public</span>
-          <Toggle
-            :size="35"
-            label="public"
-            :on="recipe.public"
-            @toggled="v => setBoolField('public', v)"
           />
         </div>
         <div class="flex mx-4 items-center mb-2 sm:mb-0">

@@ -6,13 +6,13 @@
         <section class="border p-4">
           <h4 class="label font-bold mb-3">Nicotine</h4>
           <div class="inline-input flex items-center">
-            <label class="label text-xs">Use Nicotine</label>
+            <label class="text-label text-xs">Use Nicotine</label>
             <span>
               <Toggle :on="batch.useNic" @toggled="toggleNic" />
             </span>
           </div>
           <div class="inline-input flex items-center">
-            <label for="nic-strength" class="label text-xs"
+            <label for="nic-strength" class="text-label text-xs"
               >Strength (mg/ml)</label
             >
             <input
@@ -24,7 +24,7 @@
             />
           </div>
           <div class="inline-input flex items-center">
-            <label class="label text-xs">Base VG/PG %</label>
+            <label class="text-label text-xs">Base VG/PG %</label>
             <span class="flex vg-pg items-center">
               <input
                 type="text"
@@ -49,7 +49,7 @@
         <section class="border p-4">
           <h4 class="label font-bold mb-3">Finished Batch</h4>
           <div class="inline-input flex items-center">
-            <label for="batch-strength" class="label text-xs"
+            <label for="batch-strength" class="text-label text-xs"
               >Nic Strength</label
             >
             <input
@@ -61,7 +61,9 @@
             />
           </div>
           <div class="inline-input flex items-center">
-            <label for="batch-size" class="label text-xs">Batch Size</label>
+            <label for="batch-size" class="text-label text-xs"
+              >Batch Size</label
+            >
             <input
               id="batch-size"
               type="text"
@@ -70,7 +72,7 @@
             />
           </div>
           <div class="inline-input flex items-center flex-grow">
-            <label id="nic-vg" class="label text-xs">Batch VG %</label>
+            <label id="nic-vg" class="text-label text-xs">Batch VG %</label>
             <span class="flex vg-pg items-center">
               <input
                 type="text"
@@ -80,7 +82,7 @@
                 :disabled="batch.maxVg"
               />
               <div class="flex items-center ml-4">
-                <label class="label text-xs">Max</label>
+                <label class="text-label text-xs">Max</label>
                 <span class="flex vg-pg items-center">
                   <Toggle :on="batch.maxVg" @toggled="toggleMaxVg" />
                 </span>

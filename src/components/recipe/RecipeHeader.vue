@@ -6,7 +6,7 @@
     <div class="flex-grow">
       <div class="inline-block" :class="{ 'mb-4': !compact }">
         <h1
-          class="text-body tracking-wider font-medium mb-0"
+          class="text-body mb-0 font-alt"
           :class="{ 'text-2xl': !compact, 'text-xl': compact }"
         >
           {{ recipe.title }}

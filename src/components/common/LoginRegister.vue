@@ -13,7 +13,7 @@
     <div class="has-error text-center text-sm font-normal" v-if="error">
       {{ error }}
     </div>
-    <div class="flex flex-col mt-4">
+    <div class="flex flex-col my-2">
       <label for="username" class="label sr-only">Username</label>
       <input
         id="username"
@@ -26,7 +26,7 @@
       />
     </div>
     <template v-if="!registering">
-      <div class="flex flex-col my-4">
+      <div class="flex flex-col my-2">
         <label for="password" class="label sr-only">Password</label>
         <input
           id="password"
@@ -37,7 +37,7 @@
           v-model="credentials.password"
         />
       </div>
-      <div class="mt-2 flex">
+      <div class="mt-3 flex">
         <button
           class="btn small bg-primary text-primary mr-1 flex-grow"
           type="button"
@@ -90,7 +90,7 @@
           v-model="credentials.passwordC"
         />
       </div>
-      <div class="mt-2 flex">
+      <div class="mt-3 flex">
         <button
           class="btn small bg-primary text-primary mr-1 flex-grow"
           type="button"
@@ -171,9 +171,8 @@ export default {
         },
 
         onSuccess: r => {
-          debugger;
           t.$store.dispatch("user/loadStash");
-          t.$store.dispatch("user/login", r);
+          t.$store.dispatch("user/login", r.data);
           notify.success("Successfully logged in");
           t.credentials = {
             username: "",

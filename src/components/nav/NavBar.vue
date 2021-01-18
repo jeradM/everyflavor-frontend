@@ -21,13 +21,13 @@
     <div class="sm:items-stretch px-4 flex-grow hidden sm:flex">
       <router-link
         :to="{ path: '/recipes' }"
-        class="nav-link block flex items-center px-1 mx-2"
+        class="nav-link block flex items-center px-1 mx-2 font-alt"
       >
         <span>Recipes</span>
       </router-link>
       <router-link
         :to="{ path: '/flavors' }"
-        class="nav-link block flex items-center px-1 mx-2"
+        class="nav-link block flex items-center px-1 mx-2 font-alt"
       >
         <span>Flavors</span>
       </router-link>

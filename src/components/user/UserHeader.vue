@@ -1,7 +1,10 @@
 <template>
   <div class="flex" :class="classes">
     <div class="flex-grow p-4 flex flex-col">
-      <div class="text-3xl mb-0">{{ user.username }}</div>
+      <div class="text-3xl mb-0 font-alt font-thin flex items-center">
+        <span class="text-soft text-2xl font-thin relative">@</span
+        >{{ user.username }}
+      </div>
       <StarRating
         :increment="0.01"
         :rating="avgRating"
