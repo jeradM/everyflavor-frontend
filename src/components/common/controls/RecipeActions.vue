@@ -3,7 +3,7 @@
     <mix-button :recipeId="recipeId" />
     <remix-button :recipeId="recipeId" classes="ml-1" />
     <publish-button
-      v-if="!published"
+      v-if="!published && canEdit"
       :recipe-id="recipeId"
       class="ml-1"
       @published="$emit('published')"

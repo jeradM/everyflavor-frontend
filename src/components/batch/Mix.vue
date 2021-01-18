@@ -142,32 +142,32 @@ export default {
         pg: {},
         flavors: [],
         totalVg: 0,
-        totalPg: 0,
+        totalPg: 0
       },
       totalVg: 0,
       totalPg: 0,
       hideG: false,
       hideMl: false,
-      err: null,
+      err: null
     };
   },
   props: {
     batch: {
       type: Object,
-      required: true,
+      required: true
     },
     editing: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   watch: {
     batch: {
       handler() {
         this.updateMix();
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
     flavorName(flavorId) {
@@ -211,12 +211,12 @@ export default {
       this.mix.nic = {
         ml: (nicAmount / 1000).toFixed(2),
         grams: ((nicAmount * ng) / 1000).toFixed(2),
-        percent: ((nicAmount / this.batch.batchSizeM) * 100).toFixed(2),
+        percent: ((nicAmount / this.batch.batchSizeM) * 100).toFixed(2)
       };
     },
     updateFlavors() {
       this.mix.flavors = [];
-      this.batch.flavors.forEach((bf) => {
+      this.batch.flavors.forEach(bf => {
         const r = bf.percentM / 1000 / 100;
         const a = r * this.batch.batchSizeM;
         const g = bf.vg ? a * vgDensity : a * pgDensity;
@@ -227,7 +227,7 @@ export default {
           vg: bf.vg,
           ml: (a / 1000).toFixed(2),
           grams: (g / 1000).toFixed(2),
-          percent: (r * 100).toFixed(2),
+          percent: (r * 100).toFixed(2)
         });
       });
     },
@@ -249,7 +249,7 @@ export default {
       this.mix.vg = {
         ml: vgMl.toFixed(2),
         grams: (vgMl * vgDensity).toFixed(2),
-        percent: ((requiredVg * 100) / this.batch.batchSizeM).toFixed(2),
+        percent: ((requiredVg * 100) / this.batch.batchSizeM).toFixed(2)
       };
 
       if (this.batch.maxVg) return;
@@ -266,13 +266,13 @@ export default {
       this.mix.pg = {
         ml: pgMl.toFixed(2),
         grams: (pgMl * pgDensity).toFixed(2),
-        percent: ((requiredPg * 100) / this.batch.batchSizeM).toFixed(2),
+        percent: ((requiredPg * 100) / this.batch.batchSizeM).toFixed(2)
       };
-    },
+    }
   },
   mounted() {
     this.updateMix();
-  },
+  }
 };
 
 const vgDensity = 1.261;

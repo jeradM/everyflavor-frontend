@@ -18,21 +18,21 @@ export default {
   props: {
     recipeId: {
       type: Number,
-      required: true,
+      required: true
     },
-    classes: String,
+    classes: String
   },
   computed: {
-    editIcon: () => mdiPencil,
+    editIcon: () => mdiPencil
   },
   methods: {
     onClick() {
       this.$router.push({
         name: "editRecipe",
-        params: { id: this.recipeId },
+        params: { id: this.recipeId }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

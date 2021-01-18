@@ -14,15 +14,15 @@ export default {
   props: {
     recipe: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   computed: {
     totalFlavor() {
       const t = sumBy(this.recipe.flavors, "percentM");
       return parseFloat((t / 1000).toFixed(2));
-    },
-  },
+    }
+  }
 };
 </script>
 

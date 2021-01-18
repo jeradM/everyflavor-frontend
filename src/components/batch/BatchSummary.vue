@@ -14,20 +14,20 @@ export default {
   props: {
     flavors: {
       type: Array,
-      required: true,
+      required: true
     },
     totalVg: {
       type: Number,
-      required: true,
+      required: true
     },
     totalPg: {
       type: Number,
-      required: true,
+      required: true
     },
     nicStrength: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   computed: {
     batchSize() {
@@ -41,10 +41,10 @@ export default {
     },
     flavorTotal() {
       return parseFloat(
-        sumBy(this.flavors, (f) => parseFloat(f.percent)).toFixed(2)
+        sumBy(this.flavors, f => parseFloat(f.percent)).toFixed(2)
       );
-    },
-  },
+    }
+  }
 };
 </script>
 

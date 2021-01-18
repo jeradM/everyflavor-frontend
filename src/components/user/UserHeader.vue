@@ -37,22 +37,22 @@ export default {
   props: {
     user: {
       type: Object,
-      required: true,
+      required: true
     },
     stats: {
       type: Object,
-      required: true,
+      required: true
     },
     classes: {
       type: [String, Object, Array],
-      default: "",
-    },
+      default: ""
+    }
   },
   computed: {
     avgRating() {
       return parseFloat((this.stats.avgRating / 1000).toFixed(2));
-    },
-  },
+    }
+  }
 };
 </script>
 

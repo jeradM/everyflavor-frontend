@@ -14,8 +14,8 @@ export default {
       const id = this.$route.query.recipeId;
       if (!id) return null;
       return parseInt(id);
-    },
-  },
+    }
+  }
   // mounted() {
   //   const id = this.$route.query.recipeId;
   //   this.recipe = await fetchRecipe(id);

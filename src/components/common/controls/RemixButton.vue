@@ -15,18 +15,18 @@ export default {
   props: {
     recipeId: {
       type: Number,
-      required: true,
+      required: true
     },
-    classes: String,
+    classes: String
   },
   methods: {
     onClick() {
       this.$router.push({
         name: "createRecipe",
-        query: { recipeId: this.recipeId },
+        query: { recipeId: this.recipeId }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

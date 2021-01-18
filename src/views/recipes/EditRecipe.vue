@@ -13,8 +13,8 @@ export default {
   computed: {
     recipeId() {
       return parseInt(this.$route.params.id);
-    },
-  },
+    }
+  }
 };
 </script>
 

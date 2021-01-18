@@ -6,28 +6,28 @@ const KEYS = [
   FLAVORS_KEY,
   FLAVORS_UPDATED_KEY,
   FLAVOR_SEARCH_KEY,
-  RECIPE_SEARCH_KEY,
+  RECIPE_SEARCH_KEY
 ];
 
 const set = (key, val) => {
   localStorage.setItem(key, JSON.stringify(val));
 };
 
-const get = (key) => {
+const get = key => {
   const s = localStorage.getItem(key);
   if (!s) return null;
   return JSON.parse(s);
 };
 
-const remove = (key) => {
+const remove = key => {
   localStorage.removeItem(key);
 };
 
 const clear = () => {
-  KEYS.forEach((k) => remove(k));
+  KEYS.forEach(k => remove(k));
 };
 
-const setFlavors = (f) => {
+const setFlavors = f => {
   set(FLAVORS_KEY, f);
   set(FLAVORS_UPDATED_KEY, new Date().getTime() / 1000);
 };
@@ -40,13 +40,13 @@ const getFlavorsUpdated = () => {
   return parseInt(l);
 };
 
-const setFlavorCache = (f) => {
+const setFlavorCache = f => {
   set(FLAVOR_SEARCH_KEY, f);
 };
 
 const getFlavorCache = () => get(FLAVOR_SEARCH_KEY);
 
-const setRecipesCache = (r) => {
+const setRecipesCache = r => {
   set(RECIPE_SEARCH_KEY, r);
 };
 
@@ -60,5 +60,5 @@ export default {
   getFlavorCache,
   setFlavorCache,
   getRecipesCache,
-  setRecipesCache,
+  setRecipesCache
 };

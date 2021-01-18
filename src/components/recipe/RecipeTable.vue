@@ -30,22 +30,22 @@ export default {
     flavor(rf) {
       const f = this.$store.getters["flavors/byId"](rf.flavorId);
       return f.name;
-    },
+    }
   },
   props: {
     flavors: {
       type: Array,
-      required: true,
+      required: true
     },
     striped: {
       type: Boolean,
-      default: false,
+      default: false
     },
     classes: {
       type: String,
-      default: "",
-    },
-  },
+      default: ""
+    }
+  }
 };
 </script>
 

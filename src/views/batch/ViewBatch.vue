@@ -23,16 +23,16 @@ export default {
         batchStrength: 6,
         batchSizeM: 30000,
         useNic: true,
-        flavors: [],
+        flavors: []
       },
-      recipe: {},
+      recipe: {}
     };
   },
   async mounted() {
     const batchId = parseInt(this.$route.params.id);
     this.batch = await fetchBatch(batchId);
     this.recipe = await fetchRecipe(this.batch.recipeId);
-  },
+  }
 };
 </script>
 

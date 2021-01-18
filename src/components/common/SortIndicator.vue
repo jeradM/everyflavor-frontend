@@ -14,13 +14,13 @@ export default {
     active: Boolean,
     desc: Boolean,
     classes: String,
-    size: Number,
+    size: Number
   },
   computed: {
     icon() {
       return !this.active ? "" : this.desc ? mdiChevronDown : mdiChevronUp;
-    },
-  },
+    }
+  }
 };
 </script>
 

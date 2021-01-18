@@ -25,7 +25,7 @@
         @apply tracking-wider text-sm p-1;
     }
     .btn {
-        @apply py-2 px-3 text-sm shadow rounded-btn;
+        @apply py-2 px-3 text-sm shadow rounded-btn cursor-pointer;
     }
     .btn:hover {
         @apply shadow-md;

@@ -5,7 +5,6 @@
       <tr>
         <th class="table-header">Recipe</th>
         <th class="table-header w-1/6">Created</th>
-        <!--        <th class="table-header w-1/6">Rating</th>-->
       </tr>
       <tr v-for="batch of batches" :key="batch.id">
         <td class="table-cell">
@@ -14,7 +13,6 @@
           }}</router-link>
         </td>
         <td class="table-cell">{{ dateString(batch.createdAt) }}</td>
-        <!--        <td class="table-cell">{{ (recipe.avgRating / 1000).toFixed(2) }}</td>-->
       </tr>
     </table>
   </div>
@@ -35,24 +33,24 @@ export default {
         sort: "created_at",
         order: "desc",
         limit: 25,
-        offset: 0,
-      },
+        offset: 0
+      }
     };
   },
   computed: {
     batches() {
       return this.$store.getters["user/batches"];
     },
-    searchIcon: () => mdiMagnify,
+    searchIcon: () => mdiMagnify
   },
   methods: {
     dateString(d) {
       return dateString(d);
-    },
+    }
   },
   async mounted() {
     this.$store.dispatch("user/loadBatches");
-  },
+  }
 };
 </script>
 

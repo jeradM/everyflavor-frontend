@@ -18,21 +18,21 @@ export default {
   props: {
     recipeId: {
       type: Number,
-      required: true,
+      required: true
     },
-    classes: String,
+    classes: String
   },
   computed: {
-    icon: () => mdiContentDuplicate,
+    icon: () => mdiContentDuplicate
   },
   methods: {
     onClick() {
       this.$router.push({
         name: "createRecipe",
-        query: { recipeId: this.recipeId, newVersion: true },
+        query: { recipeId: this.recipeId, newVersion: true }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

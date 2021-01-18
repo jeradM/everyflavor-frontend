@@ -57,14 +57,14 @@ export default {
         sort: "created_at",
         order: "desc",
         limit: 25,
-        offset: 0,
-      },
+        offset: 0
+      }
     };
   },
   methods: {
     dateString(d) {
       return dateString(d);
-    },
+    }
   },
   async mounted() {
     const user = currentUser();
@@ -73,7 +73,7 @@ export default {
 
     const recipes = await fetchMyRecipes();
     this.recipes = recipes.result;
-  },
+  }
 };
 </script>
 

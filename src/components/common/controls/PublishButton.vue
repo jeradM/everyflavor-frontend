@@ -3,7 +3,7 @@
     class="btn xsmall warning"
     :class="classes"
     role="link"
-    @click="onClick"
+    @click="showConfirm"
   >
     Publish
   </button>
@@ -11,6 +11,7 @@
 
 <script>
 import { publishRecipe } from "@/util/recipe";
+import PublishModal from "@/components/recipe/PublishModal";
 
 export default {
   name: "PublishButton",
@@ -22,11 +23,20 @@ export default {
     classes: String
   },
   methods: {
-    onClick() {
+    showConfirm() {
+      const t = this;
+      this.$modal.show(
+        PublishModal,
+        { onPublish: t.publish, name: "publishModal" },
+        { name: "publishModal", height: "auto", adaptive: true, maxWidth: 400 }
+      );
+    },
+    publish(name) {
       const ok = publishRecipe(this.recipeId);
       if (ok) {
         this.$emit("published");
       }
+      this.$modal.hide(name);
     }
   }
 };

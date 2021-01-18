@@ -8,7 +8,7 @@ export const arraysMatch = (a1, a2) => {
   return true;
 };
 
-export const dateString = (d) => new Date(d).toLocaleDateString();
+export const dateString = d => new Date(d).toLocaleDateString();
 
 export const truncateTo = (num, n) => {
   const r = new RegExp(`^-?\\d+(?:\\.\\d{0,${n}})?`);

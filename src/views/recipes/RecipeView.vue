@@ -10,8 +10,8 @@ export default {
   computed: {
     viewKey() {
       return this.$route.params.id || 0;
-    },
-  },
+    }
+  }
 };
 </script>
 

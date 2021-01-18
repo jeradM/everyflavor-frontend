@@ -17,15 +17,15 @@ export default {
   props: {
     userId: {
       type: Number,
-      required: true,
+      required: true
     },
-    classes: String,
+    classes: String
   },
   methods: {
     onClick() {
       notify.info("Followed user " + this.userId);
-    },
-  },
+    }
+  }
 };
 </script>
 
